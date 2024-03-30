@@ -4,9 +4,11 @@ class Node:
     self.next = next
     self.prev = prev
 
+
 class LinkedList:
   def __init__(self):
     self.head = Node(None, None, None)
+    self.cnt = 1
 
   def insert(self, i:int, x:int):
     """insert x in ith element"""
@@ -17,8 +19,7 @@ class LinkedList:
     else:
       prev = self.getNode(i - 1)
       self.curr.prev = prev
-      prev.next = curr
-      
+      prev.next = curr  
 
 
   def delete(self, i):
