@@ -80,13 +80,7 @@ class DoublyLinkedList:
             newNode = Node(x, prev, curr)
             prev.next = newNode
             curr.prev = newNode
-            self.numItems += 1
-
-
-
-        
-
-
+            self.numItems += 1      
     
     def printList(self):
         if self.numItems == 0:
@@ -102,3 +96,40 @@ class DoublyLinkedList:
                     print(curr.item)
                 else:
                     print(curr.item, " -> ", end='')
+    
+    def reverse(self):
+        if self.numItems == 0 or self.numItems == 1:
+            return None
+        
+        curr =self.head
+        next = curr.next
+
+        while next != self.tail:
+            tmp = next.next
+            next.next = curr
+            curr.prev = next
+
+            curr = next
+            next = tmp
+
+            if next == self.tail:
+                next.next = curr
+                curr.prev = next
+                self.head.next = next
+                next.prev = self.head
+        
+        self.tail = self.head.prev
+        
+        
+            
+
+a = DoublyLinkedList()
+
+a.append(1)
+a.append(2)
+a.append(3)
+
+a.printList()
+
+a.reverse()
+a.printList()
