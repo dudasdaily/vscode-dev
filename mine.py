@@ -12,15 +12,9 @@ def count_mine(lst, i, j):
     if lst[i][j] == "*":
         return "*"
     
-    for m in range(i - 1, i + 2, 1):
-        if m < 0 or m > row - 1:
-            continue
-        
-        for n in range(j - 1, j + 2, 1):
-            if n < 0 or n > col - 1:
-                continue
-
-            elif lst[m][n] == "*":
+    for m in range(i - 1, i + 2):
+        for n in range(j - 1, j + 2):
+            if (0 <= m < row) and (0 <= n < col) and (lst[m][n] == "*"):
                 cnt += 1
         
     return cnt
